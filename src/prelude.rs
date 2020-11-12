@@ -6,10 +6,10 @@ pub use crate::client;
 #[cfg(feature = "server")]
 pub use crate::server;
 
-#[cfg(feature = "rtu")]
-pub mod rtu {
-    pub use crate::client::rtu::*;
-}
+//#[cfg(feature = "rtu")]
+//pub mod rtu {
+//    pub use crate::client::rtu::*;
+//}
 
 #[cfg(feature = "tcp")]
 pub mod tcp {
