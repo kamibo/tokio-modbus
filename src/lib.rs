@@ -13,7 +13,6 @@
 //! - async (non-blocking)
 //! - sync (blocking)
 //! - Modbus TCP
-//! - Modbus RTU
 //! - Client & Server
 //! - Open Source (MIT/Apache-2.0)
 //!
@@ -30,13 +29,6 @@
 //! ```toml
 //! [dependencies]
 //! tokio-modbus = { version = "*", default-features = false, features = ["tcp"] }
-//! ```
-//!
-//! If you like to use Modbus RTU only:
-//!
-//! ```toml
-//! [dependencies]
-//! tokio-modbus = { version = "*", default-features = false, features = ["rtu"] }
 //! ```
 //!
 //! If you like to build a TCP server:
@@ -85,31 +77,6 @@
 //! }
 //! ```
 //!
-//! ## RTU client
-//!
-//! ```rust,no_run
-//! #[cfg(feature = "rtu")]
-//! #[tokio::main]
-//! async fn main() -> Result<(), Box<dyn std::error::Error>> {
-//!     use tokio_serial::{Serial, SerialPortSettings};
-//!
-//!     use tokio_modbus::prelude::*;
-//!
-//!     let tty_path = "/dev/ttyUSB0";
-//!     let slave = Slave(0x17);
-//!
-//!     let mut settings = SerialPortSettings::default();
-//!     settings.baud_rate = 19200;
-//!     let port = Serial::from_path(tty_path, &settings).unwrap();
-//!
-//!     let mut ctx = rtu::connect_slave(port, slave).await?;
-//!     println!("Reading a sensor value");
-//!     let rsp = ctx.read_holding_registers(0x082B, 2).await?;
-//!     println!("Sensor value is: {:?}", rsp);
-//!
-//!     Ok(())
-//! }
-//! ```
 //!
 //! More examples can be found in the [examples](https://github.com/slowtec/tokio-modbus/tree/master/examples) folder.
 //!

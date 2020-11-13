@@ -1,7 +1,7 @@
 [package]
 name = "tokio-modbus"
 description = "Tokio-based Modbus library"
-version = "0.4.0"
+version = "0.4.0-tokio-0.3"
 authors = ["slowtec GmbH", "Markus Kohlhase <markus.kohlhase@slowtec.de>"]
 license = "MIT/Apache-2.0"
 readme = "README.md"
@@ -21,8 +21,6 @@ smallvec = { version = "1", default-features = false }
 # rt-core should be enabled only with "server" feature. Waiting for https://github.com/rust-lang/cargo/issues/5954
 tokio = { version = "0.3.3", features = ["rt", "rt-multi-thread"] }
 tokio-util = { version = "0.5", features = ["codec"] }
-# Disable default-features to exclude unused dependency on libudev
-tokio-serial = { version = "4.3.3", optional = true, default-features = false }
 
 [dev-dependencies]
 env_logger = "0.7"
@@ -30,8 +28,7 @@ futures = "0.3"
 tokio = { version = "0.3.3", features = ["net", "macros", "io-util", "stream"] }
 
 [features]
-default = ["tcp", "rtu", "sync"]
-rtu = ["tokio-serial", "futures-util/sink"]
+default = ["tcp", "sync"]
 tcp = ["tokio/net", "futures-util/sink"]
 sync = []
 server = ["net2", "futures"]

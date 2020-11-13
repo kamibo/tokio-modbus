@@ -1,6 +1,3 @@
-//#[cfg(feature = "rtu")]
-//pub mod rtu;
-
 #[cfg(feature = "sync")]
 pub mod sync;
 

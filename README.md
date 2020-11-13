@@ -1,5 +1,8 @@
 # tokio-modbus
 
+Upgraded version that uses tokio-0.3.
+Also drop RTU feature as tokio-serial is tokio-0.2 only.
+
 A [tokio](https://tokio.rs)-based modbus library.
 
 [![Crates.io version](https://img.shields.io/crates/v/tokio-modbus.svg)](https://crates.io/crates/tokio-modbus)
@@ -14,7 +17,6 @@ A [tokio](https://tokio.rs)-based modbus library.
 - async (non-blocking)
 - sync (blocking)
 - Modbus TCP
-- Modbus RTU
 - Client & Server
 - Open Source (MIT/Apache-2.0)
 
@@ -33,14 +35,6 @@ If you like to use Modbus TCP only:
 [dependencies]
 tokio-modbus = { version = "*", default-features = false, features = ["tcp"] }
 ```
-
-If you like to use Modbus RTU only:
-
-```toml
-[dependencies]
-tokio-modbus = { version = "*", default-features = false, features = ["rtu"] }
-```
-
 If you like to build a TCP server:
 
 ```toml
@@ -50,7 +44,7 @@ tokio-modbus = { version = "*", default-features = false, features = ["tcp", "se
 
 ## Examples
 
-Various examples for Modbus RTU and TCP using either the asynchronous
+Various examples for Modbus TCP using either the asynchronous
 or synchronous API can be found in the
 [examples](https://github.com/slowtec/tokio-modbus/tree/master/examples)
 folder.
