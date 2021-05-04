@@ -11,7 +11,7 @@ repository = "https://github.com/slowtec/tokio-modbus"
 edition = "2018"
 
 [dependencies]
-bytes = "0.6"
+bytes = "1.0"
 byteorder = "1"
 futures = { version = "0.3", optional = true }
 futures-util = { version = "0.3", default-features = false }
@@ -19,13 +19,13 @@ log = "0.4"
 net2 = { version = "0.2", optional = true, default-features = false }
 smallvec = { version = "1", default-features = false }
 # rt-core should be enabled only with "server" feature. Waiting for https://github.com/rust-lang/cargo/issues/5954
-tokio = { version = "0.3.3", features = ["rt", "rt-multi-thread"] }
-tokio-util = { version = "0.5", features = ["codec"] }
+tokio = { version = "1.0", features = ["rt", "rt-multi-thread"] }
+tokio-util = { version = "0.6", features = ["codec"] }
 
 [dev-dependencies]
 env_logger = "0.7"
 futures = "0.3"
-tokio = { version = "0.3.3", features = ["net", "macros", "io-util", "stream"] }
+tokio = { version = "1.0", features = ["net", "macros", "io-util"] }
 
 [features]
 default = ["tcp", "sync"]
